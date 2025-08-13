@@ -1,53 +1,67 @@
-# GraphQuest: Character Queries
+# ALX GraphQL Project - Character Queries
 
-This directory contains GraphQL queries and outputs for specific characters from the Rick and Morty API.
-
-## Files overview
-
-Each character ID (1 through 4) includes:
-
-- `character-id-X.graphql`: Query to fetch character by ID.
-- `character-id-X-output.json`: Sample JSON response.
+This project contains GraphQL queries and their outputs for retrieving character information from the [Rick and Morty GraphQL API](https://rickandmortyapi.com/graphql).
 
 ---
 
-## GraphQL Endpoint
+## **Task 0: Query a Single Character by ID**
 
-All queries use this endpoint:
+For each character ID (1–4), the query retrieves:
 
-https://rickandmortyapi.com/graphql
+- `id`
+- `name`
+- `status`
+- `image`
 
----
+### Files:
+- `character-id-1.graphql`
+- `character-id-1-output.json`
+- `character-id-2.graphql`
+- `character-id-2-output.json`
+- `character-id-3.graphql`
+- `character-id-3-output.json`
+- `character-id-4.graphql`
+- `character-id-4-output.json`
 
-## Query Format
-
+**Example Query (`character-id-1.graphql`):**
 ```graphql
 query {
   character(id: 1) {
     id
     name
     status
-    species
-    type
-    gender
+    image
   }
 }
-Usage
-Open character-id-2.graphql, change ID if needed.
-Execute in GraphiQL or GraphQL Playground.
-Copy the JSON response into the matching output file.
-Example Response Structure (abbreviated)
-{
-  "data": {
-    "character": {
-      "id": "1",
-      "name": "Rick Sanchez",
-      "status": "Alive",
-      "species": "Human",
-      "type": "",
-      "gender": "Male"
+Task 1: Get a List of All Characters (Paginated)
+Using the characters(page: Int) field, queries retrieve characters from pages 1 to 4.
+Selected subfields:
+id
+name
+status
+image
+Files:
+characters-page-1.graphql
+characters-page-1-output.json
+characters-page-2.graphql
+characters-page-2-output.json
+characters-page-3.graphql
+characters-page-3-output.json
+characters-page-4.graphql
+characters-page-4-output.json
+Example Query (characters-page-1.graphql):
+query {
+  characters(page: 1) {
+    results {
+      id
+      name
+      status
+      image
     }
   }
 }
-Goal
-This setup helps you verify each query executes correctly and outputs are captured as expected.
+How to Run the Queries
+Open the Rick and Morty GraphQL Playground
+Copy the query from the .graphql file into the editor
+Click Run Query
+Copy the result and save it in the corresponding .json file
